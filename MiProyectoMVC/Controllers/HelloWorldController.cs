@@ -1,10 +1,4 @@
-using System.Diagnostics;
-using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc;
-using MiProyectoMVC.Models;
-
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
 
 
 namespace MvcMovie.Controllers
@@ -13,15 +7,13 @@ namespace MvcMovie.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Welcome", new { name = "Sofi", numTimes = 3 });
         }
-
 
         public IActionResult Welcome(string name, int numTimes = 1)
         {
             ViewData["Message"] = "Hello " + name;
             ViewData["NumTimes"] = numTimes;
-
 
             return View();
         }
