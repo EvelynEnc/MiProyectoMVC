@@ -2,7 +2,7 @@
 
 namespace MvcMovie.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController2 : Controller
     {
         public IActionResult Index()
         {
