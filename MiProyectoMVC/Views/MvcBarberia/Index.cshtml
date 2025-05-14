@@ -1,0 +1,26 @@
+﻿@model List<MiProyectoMVC.Models.Servicio>
+
+@{
+    ViewData["Title"] = "Servicios disponibles";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Servicios Disponibles</h1>
+
+    <div class="row">
+        @foreach (var servicio in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@servicio.Nombre</h5>
+                        <p class="card-text">Categoría: @servicio.Categoria</p>
+                        <p class="card-text">Precio: $@servicio.Precio</p>
+                        <p class="card-text">Duración: @servicio.DuracionAproximada minutos</p>
+                        <a href="@Url.Action("Details", "MvcBarberia", new { id = servicio.Id })" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

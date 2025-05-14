@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace MvcMovie.Controllers
+namespace MvcBarberia.Controllers
 {
     public class HelloWorldController : Controller
     {

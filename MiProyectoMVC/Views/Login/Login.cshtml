@@ -1,21 +1,122 @@
 ﻿@{
     ViewBag.Title = "Login";
     Layout = null;
-    <h2>Login</h2>
-
-
 }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
 
-@using (Html.BeginForm())
-{
-    <p>Usuario: @Html.TextBox("username")</p>
-    <p>Password: @Html.TextBox("password")</p>
-    <input type="submit" value="Ingresar">
+        .container {
+            width: 360px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
 
+        .header {
+            background: url('/imagenes/fondo-Barberia.jpeg') center/cover no-repeat; height: 180px;
+            position: relative;
+        }
 
-}
-@if (ViewBag.Error != null)
-{
+        .logo {
+            width: 100px;
+            border-radius: 50%;
+            background: #fff;
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+        }
 
-    <p style="color:red">@ViewBag.Error</p>
-}
+        .form-box {
+            padding: 70px 30px 30px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background: #f3f3f3;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background: #111;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+            input[type="submit"]:hover {
+                background: #333;
+            }
+
+        .links {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="/imagenes/logo-CasaOculta.png" class="logo" alt="Logo">
+        </div>
+        <div class="form-box">
+            <h2>Login</h2>
+            @using (Html.BeginForm())
+            {
+                <input type="text" name="username" placeholder="Nombre de usuario" required />
+                <input type="password" name="password" placeholder="Contraseña" required />
+                <input type="submit" value="Ingresar" />
+            }
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="error">@ViewBag.Error</div>
+            }
+
+            <div class="links">
+                <p><a href="#">¿Olvidaste tu contraseña?</a></p>
+                <p><a href="#">¿No tenés cuenta? Registrate</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

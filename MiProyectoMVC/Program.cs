@@ -5,7 +5,7 @@ using MiProyectoMVC.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Configuración de la base de datos
-builder.Services.AddDbContext<MvcMovieContext>(options =>
+builder.Services.AddDbContext<MvcBarberiaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Agregamos servicios de MVC
@@ -42,6 +42,6 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Login}/{id?}");
 
 app.Run();
