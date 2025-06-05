@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,7 +18,13 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+
+                    @{
+                        var userRole = Context.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value;
+                    }
+
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -24,23 +32,42 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+                        @* Mostrar link solo para Dueño o Empleado *@
+                        @if (userRole == "Dueño" || userRole == "Empleado")
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="UsuarioEmpleado" asp-action="Registrar">Registrar Nuevo Empleado</a>
+                            </li>
+
+                            @if (userRole == "Cliente")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Turnos" asp-action="Reservar">Reservar Turno</a>
+                                </li>
+                            }
+
+
+                        }
                     </ul>
+
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - Movie App - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - Barbería App - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

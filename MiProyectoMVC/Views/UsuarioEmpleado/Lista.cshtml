@@ -1,0 +1,38 @@
+﻿@model List<MiProyectoMVC.Models.UsuarioEmpleadoModel>
+
+@{
+    ViewBag.Title = "Lista de Empleados";
+}
+
+<h1>Lista de Empleados</h1>
+
+<a href="@Url.Action("Registrar", "UsuarioEmpleado")" class="btn btn-primary mb-3">
+    Registrar Nuevo Empleado
+</a>
+
+<!-- Aquí el resto de la lista de empleados -->
+
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var empleado in Model)
+        {
+            <tr>
+                <td>@empleado.id</td>
+                <td>@empleado.username</td>
+                <td>@empleado.name</td>
+                <td>@empleado.fechanacimiento.ToShortDateString()</td>
+                <td>@empleado.email</td>
+            </tr>
+        }
+    </tbody>
+</table>

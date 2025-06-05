@@ -1,0 +1,35 @@
+﻿@model MvcBarberiaContext
+
+@{
+    ViewData["Title"] = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2 class="display-4 text-dark">Bienvenido a Casa Oculta</h2>
+            <p class="lead text-secondary">Tu barbería de confianza en Ciudad Oculta.</p>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="card border-dark">
+                <div class="card-header bg-dark text-white">
+                    <h4>Detalles de tu sesión</h4>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            <footer class="text-muted bg-dark p-3 rounded">
+                <p class="mb-0 text-white">&copy; @DateTime.Now.Year - Casa Oculta Barbería</p>
+                <p><a href="#" class="text-white">Política de privacidad</a> | <a href="#" class="text-white">Términos de servicio</a></p>
+            </footer>
+        </div>
+    </div>
+</div>

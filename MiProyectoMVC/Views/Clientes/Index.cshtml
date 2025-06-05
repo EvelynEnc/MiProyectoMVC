@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MiProyectoMVC.Models.ClienteModel>
+
+<h2>Lista de Clientes</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.id</td>
+                <td>@cliente.nombre</td>
+                <td>@cliente.telefono</td>
+                <td>@cliente.email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Create", "Cliente")" class="btn btn-primary">Nuevo Cliente</a>

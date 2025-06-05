@@ -7,7 +7,7 @@ namespace MvcBarberia.Controllers
     {
         public IActionResult Index()
         {
-            return RedirectToAction("Welcome", new { name = "Sofi", numTimes = 3 });
+            return View();
         }
 
         public IActionResult Welcome(string name, int numTimes = 1)
